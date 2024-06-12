@@ -1,0 +1,13 @@
+body{
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  align-items: center;
+}
+
+.start-button,.pause-button,.reset-button{
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
