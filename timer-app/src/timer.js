@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./timer.css";
 
 function Timer() {
   const [seconds, setSeconds] = useState(0);
-  const [intervalId, setIntervalId] = useState(null);
+  const intervalId = useRef(null);
   const [isRunning, setIsRunning] = useState(false);
+  // const headingref = useRef(null);
 
   useEffect(() => {
     if (isRunning) {
-      const id = setInterval(() => {
+      intervalId.current = setInterval(() => {
         setSeconds((prevSeconds) => prevSeconds + 1);
       }, 1000);
-      setIntervalId(id);
     }
     return () => {
-      clearInterval(intervalId);
+      clearInterval(intervalId.current);
     };
   }, [isRunning]);
 
@@ -25,13 +25,13 @@ function Timer() {
   }
   function handlePause() {
     if (isRunning) {
-      clearInterval(intervalId);
+      clearInterval(intervalId.current);
       setIsRunning(false);
     }
   }
 
   function handleReset() {
-    clearInterval(intervalId);
+    clearInterval(intervalId.current);
     setSeconds(0);
     setIsRunning(false);
   }
